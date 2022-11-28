@@ -10,4 +10,4 @@ The tested runtime is unmodified Lua 5.4.x, and in the CMD and Windows Console H
 C:\test folder\my videos\video 1.mp4  
 and press enter.  
 The output will generated at the same directory where this program was being executed, and named `out.mp4`.  
-No worry if you were putting the wrong things into this program, because it reads the input as `READ ONLY`, and if is has the wrong binary headers, the program will not continue but exit and give you the tip.
+No worry if you were putting the wrong things into this program, because it reads the input as `READ ONLY`, and if it has the wrong binary headers, the program will not continue but exit and give you the tip.
