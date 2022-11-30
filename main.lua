@@ -25,29 +25,32 @@ local function get_input_file()
         --#endregion
     end
 
-    return {
-        xpcall(
-            function()
-                local f = io.open(path, "rb")
-                if type(f) =="userdata" then
-                    print("please wait...")
-                else
-                    error()
+    return (
+        {
+            xpcall(
+                function()
+                    local f = io.open(path, "rb")
+                    if type(f) =="userdata" then
+                        print("please wait...")
+                    else
+                        error()
+                    end
+                    return f
+                end,
+                function(err)
+                    print("check the file path you've input.")
+                    os.execute("pause")
+                    os.exit()
                 end
-                return f
-            end,
-            function(err)
-                print("check the file path you've input.")
-                os.execute("pause")
-                os.exit()
-            end
-        )
-    }
+            )
+        }
+    )[2]
 end
 
 
 
 local function main(f)
+    local t0 <const> = os.clock()
     local data = f:read("*a")
     local needprocess = true
     local head = {string.byte(data, 1, 3)}
@@ -65,12 +68,9 @@ local function main(f)
         os.execute("pause")
         os.exit()
     end
+    local dt <const> = os.clock() - t0
+    print(string.format("done!\nproc time: %.fms", dt * 1000))
+    os.execute("pause")
 end
 
-local f = get_input_file()[2]
-
-local t0 <const> = os.clock()
-main(f)
-local dt <const> = os.clock() - t0
-print(string.format("done!\nproc time: %.fms", dt * 1000))
-os.execute("pause")
+main(get_input_file())
