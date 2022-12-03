@@ -1,3 +1,10 @@
+--[[
+---------------------------------------------------
+    Copyright (C) wst.pub, All Rights Reserved.
+---------------------------------------------------
+]]
+
+
 -- local function main()
 --     local f <close> = io.open("input.mp4", "rb")
 --     f:seek("set", 3)
